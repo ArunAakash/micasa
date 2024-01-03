@@ -1,0 +1,132 @@
+@import '../../styles/global.scss';
+
+$footerColor: #D9DBE1;
+
+.container{
+    @include flexRow(flex-start, space-around);
+    width: 100vw;
+    min-height: 250px;
+    padding:50px;
+    color: $footerColor;
+    background-color: $primaryColor;
+    @include content;
+
+    .aboutPage{
+        @include flexCol(flex-start, center);
+        gap: 15px;
+        width: 200px;
+
+        .heading{
+            @include heading;
+            color: $baseColor;
+
+            :last-child{
+                color: $secondaryColor;
+            }
+        }
+
+        .content{
+            padding-bottom: 10px;
+
+            :first-child{
+                padding-bottom: 10px;
+            }
+        }
+
+        .socialMedia{
+            @include flexRow();
+            gap: 15px;
+
+            span{
+                cursor: pointer;
+
+                :hover{
+                    color: $secondaryColor;
+                }
+            }
+        }
+    }
+
+    .menu{
+        min-width: 175px;
+
+        .subHeading{
+            @include subHeading();
+            padding-bottom: 10px;
+            color: $baseColor;
+        }
+
+        .menuItems{
+            @include flexCol(flex-start);
+            gap: 15px;
+
+            :hover{
+                color: $secondaryColor;
+            }
+
+            :first-child{
+                padding-top: 10px;
+            }
+        }
+    }
+
+    .newsLetter{
+        .label{
+            @include subHeading;
+            padding-bottom: 10px;
+            color: $baseColor;
+        }
+
+        .emailContainer{
+            @include flexRow();
+            gap: 10px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            background-color: #ccc;
+
+            button{
+                background: none;
+                border:none;
+            }
+
+            input{
+                background: transparent;
+                border: none;
+                color:black;
+                padding: 5px;
+                outline:none;
+                font-weight: bold;
+            }
+
+            svg{
+                font-size: 16px;
+                transform: rotate(-45deg);
+                color: $secondaryColor;
+                cursor: pointer;
+            }
+        }
+    }
+
+    @media only screen and (max-width:950px){
+        @include flexRow(flex-start, flex-start, 30);
+        flex-wrap: wrap;
+        width: 100%;
+
+        >div:not(.newsLetter){
+            width: 45%;
+        }
+
+        .menu{
+            .menuItems{
+                @include flexRow(flex-start, flex-start, 15);
+                flex-wrap: wrap;
+            }
+        }
+    }
+
+    @media only screen and (max-width:600px){
+        >div:not(.newsLetter){
+            width: 90%;
+        }
+    }
+}

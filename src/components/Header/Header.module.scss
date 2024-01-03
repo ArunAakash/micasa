@@ -1,0 +1,132 @@
+@import '../../styles/global.scss';
+
+.container{
+    background-color: $primaryColor;
+    color: $baseColor;
+
+    .header{
+        @include flexRow(center, space-between, 15);
+        // gap:15px;
+        padding: 10px 30px;
+
+        .sectionOne{
+            @include flexCol(flex-start, center, 10);
+
+            .title{
+                @include heading;
+
+                :last-child{
+                    color: $secondaryColor;
+                }
+            }
+
+            .options{
+                @include flexRow(center, center, 15);
+                @include content;
+
+                div{
+                    @include flexRow(center, center);
+
+                    svg{
+                        font-size: 12px;
+                        transform: rotate(90deg);
+                        margin-top: 3px;
+                    }
+                }
+            }
+        }
+
+        
+
+        .mobileMenu{
+            display: none;
+        }
+
+        @media only screen and (max-width: 800px){
+            .mobileMenu{
+                display: flex;
+            }
+
+            .sectionTwo{
+                display: none;
+            }
+
+            .sectionThree{
+                display: none;
+            }
+        }
+
+    }
+
+    .sectionTwo{
+
+        .navigation{
+            @include flexRow(center, space-around, 15);
+            @include subHeading;
+        }
+
+        .active{
+            color: $secondaryColor;
+            border-bottom: 1px solid $secondaryColor;
+            transition: 1s ease;
+        }
+    }
+
+    .sectionThree{
+        @include flexRow(center, center, 10);
+
+        button{
+            background: transparent;
+            background-color: $primaryColor;
+            border: none;
+            padding: 5px 10px;
+            color: $baseColor;
+            cursor: pointer;
+            @include subHeading;
+        }
+
+        .signUp{
+            background-color: $secondaryColor;
+        }
+
+    }
+
+    .mobileContainer{
+        display: none;
+
+        .closeIcon{
+            display: none;
+        }
+
+        @media only screen and (max-width:800px) {
+            //display: block;
+            @include flexCol(flex-start, flex-start, 20);
+            height: 100vh;
+            width: 100vw;
+            background-color: #ccc;
+            color:black;
+            padding:50px;
+            //position:absolute;
+            top: 0;
+            left: 0;
+
+            .closeIcon{
+                display: block;
+                cursor: pointer;
+                position:absolute;
+                right: 50px;
+                color: $secondaryColor;
+            }
+
+            .sectionTwo{
+                .navigation{
+                    @include flexCol(flex-start, center, 15);
+                }
+            }
+
+            .sectionThree{
+                
+            }
+        }
+    }
+}
